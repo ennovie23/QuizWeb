@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #defcf9, #cadefc, #c3bef0, #cca8e9);
+            background-size: 100%;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        #firstPage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .form {
+            background-color:transparent;
+            width: 80%;
+            height: 100%;
+            padding: 40px 40px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .inputContainer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .label {
+            margin-right: 10px;
+            font-size: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+        }
+
+        .inputBox {
+            width: 5cm;
+        }
+
+        .radio {
+            margin-right: 41%;
+        }
+
+        #instructionButton {
+            width: fit-content;
+            display: flex;
+            margin: auto;
+            margin-top: 10px;
+            margin-bottom: -30px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .instructionContainer {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .instructionContent {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+            height: 33%;
+            border-radius: 20px;
+            border: #000000 solid;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #startQuiz {
+            display: flex;
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            border: 5px #5395d7 double;
+            border-radius: 50px;
+            color: #000000;
+            cursor: pointer;
+            transform: translateY(150%);
+        }
+
+        body {
+            margin: 0%;
+        }
+
+        #testContainer {
+            background-color: (135deg, #defcf9, #cadefc, #c3bef0, #cca8e9);
+            display: flex;
+            width: 80%;
+            padding: 50px 50px 50px 50px;
+        }
+
+        #testContent {
+            width: 100%;
+            background-color:transparent;
+            border-radius: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #header {
+            background-color: transparent;
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-top: 30px;
+
+        } 
+
+        #title {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-weight:bolder;
+        }
+
+        #below-header {
+            display: flex;
+            flex-direction: row;
+            margin: 0%;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .details .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .details .detail-item label {
+            flex: 1;
+            text-align: right;
+            margin-right: 0;
+            margin-left: -30px;
+            font: 1em sans-serif;
+        }
+
+        .details .detail-item input {
+            flex: 2;
+            background-color: transparent;
+            border: none;
+            width: 300px;
+            transform: translateX(10%);
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+            color: #000000;
+        }
+
+        #details-col2{
+            transform: translateX(80%);
+        }
+
+        .display-details{
+            background-attachment: transparent;
+        }
+
+        #body {
+            background-color: transparent;
+            padding-left: 50px;
+            padding-right: 50px;
+            font-size: 1.3em;
+            padding-bottom: 30px;
+        }
+
+        .choices {
+            background-color: transparent;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .second-group-choice {
+            position: absolute;
+            transform: translateX(1003.5%);
+        }
+
+        #next-previous-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 0%;
+            background-color: transparent;
+            padding: 20px;
+            border-bottom-right-radius: 20px ;
+            border-bottom-left-radius: 20px;
+        }
+
+        #secondPage {
+            display: none;
+            flex-direction: column;
+        }
+
+        .choice {
+            margin-left: 20px; 
+        }
+
+        #header-second-page {
+            display: flex;
+            flex-direction: row;
+            padding-right: 20px;
+            
+        }
+
+        #quiz-instruction-area{
+            background-color:transparent ;
+            padding-left: 50px;
+            font-size: 1.3em;
+        }
+
+        #body-second-page{
+            display: flex;
+            flex-direction: row;
+        }
+
+        #music-button {
+            height: 40px;
+            width: 40px;
+            padding: 5px;
+            border: none; 
+            background: none; 
+            display: flex;
+            border-radius: 55px;
+            box-shadow:0 4px 10px #0000004d;
+            cursor: pointer;
+        }
+
+        #music-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        #timerDisplay {
+            padding: 20px;
+            width: fit-content;
+            display: flex;
+            justify-content: start;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            margin-top: 100px;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        #timerDisplay span {
+            animation: blinker 1s infinite;
+        }
+
+
+        #allCheckBox {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+            width: fit-content;
+            text-align: start;
+        }
+
+        #list-of-answered-items{
+            padding: 50px;
+            width: 20%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #col2{
+            margin-left: 0%;
+        }
+
+        .itemsCheckbox{
+            margin-bottom: 3px;
+        }
+
+        .checkBox div {
+            margin: 5px ;
+            
+        }
+
+        #list-and-checkbox{
+            background-color:transparent;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            padding-bottom: 20px;
+            margin-top: 25px;
+            border-radius: 40px;
+        }
+
+        #submit{
+            padding: 15px;
+            margin-top: 50px;
+            border-radius: 50px;
+            font-family: 'Times New Roman', Times, serif;
+            background-color:#d892dd;
+            cursor: pointer;
+        }
+
+        #previous, #next{
+            padding: 15px;
+            border-radius: 50px;
+            font-family: 'Times New Roman', Times, serif;
+            background-color:#9896f1;
+            width: 80px;
+            cursor: pointer;
+        }
+
+        #next{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="firstPage">
+        <div class="formContainer">
+            <div class="form">
+                <div class="inputContainer">
+                    <label for="name" class="label">Name:</label> 
+                    <input class="inputBox" id="name" type="text" placeholder="Surname, First name, MI" required>
+                </div>
+                <br>
+
+                <div class="inputContainer">
+                    <label for="section" class="label">Section:</label>
+                    <div class="radio">
+                        <input type="radio" id="sectionA" name="section" value="A">
+                        <label for="sectionA">A</label>
+                        <input type="radio" id="sectionB" name="section" value="B">
+                        <label for="sectionB" >B</label>
+                    </div>
+                </div>
+                <br>
+
+                <div class="inputContainer">
+                    <label for="course" class="label">Course:</label>
+                    <input class="inputBox" id="course" type="text" placeholder="Ex... BSCS" required>
+                </div>
+                <br>
+
+                <div class="inputContainer">
+                    <label for="prof" class="label">Professor:</label>
+                    <input class="inputBox" id="prof" type="text" required>
+                </div>
+                <br>
+
+                <div class="inputContainer">
+                    <label for="date" class="label">Date today:</label>
+                    <input class="inputBox" id="date" type="date" required>
+                </div>
+                <br>
+
+                <button id="instructionButton">Read Instructions</button>
+                <div id="instructionContainer" class="instructionContainer">
+                    <div class="instructionContent">
+                        <span class="close"> &times;</span>
+                        <h1 style="display: flex; justify-content: center;">Instructions</h1>
+                        <ul>
+                            <li>Read carefully the questionaires.</li>
+                            <li>It's a multiple choice exam, and you must choose one(1) answer by clicking the radio button.</li>
+                            <li>There will an allotted time in this examination.</li>
+                            <li>If you are done, click the submit button.</li>
+                            <li>Once the time is up, and you are not yet done, the questionaires will be hidden and your answers will be submitted automatically.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="startQuiz">
+            <button id="startQuiz">Bring it on!</button>
+        </div>
+    </div>
+    
+
+    <div id="secondPage">
+        <!-- <div id="header-second-page" class="header-second-page">
+            <h1 class="header-second-page" id="timerDisplay">00 : 00 : 00</h1>
+            <button class="header-second-page" id="music-button">
+                <img id="music-image" src="off.png" alt="Music control">
+            </button>
+            <audio loop src="Quiz BACKGROUND MUSIC.mp3" id="music" preload="auto" style="display: none;"></audio>
+            
+        </div>  -->
+        
+        <div id="body-second-page">
+            <div id="testContainer">
+                <div id="testContent">
+                    <div id="header">
+                        <h2 id="title">Programming Quiz</h2>
+                        <div id="below-header">
+                            <div class="details" id="details-col1">
+                                <div class="detail-item">
+                                    <label for="nameDetails">Name:</label>
+                                    <input id="nameDetails" class="display-details" type="text" disabled>
+                                </div>
+                                <div class="detail-item">
+                                    <label for="sectionDetails">Section:</label>
+                                    <input id="sectionDetails" class="display-details" type="text" disabled>
+                                </div>
+                                <div class="detail-item">
+                                    <label for="courseDetails">Course:</label>
+                                    <input id="courseDetails" class="display-details" type="text" disabled>
+                                </div>
+                            </div>
+                            <div class="details" id="details-col2">
+                                <div class="detail-item">
+                                    <label for="dateDetails">Date:</label>
+                                    <input id="dateDetails" class="display-details" type="text" disabled>
+                                </div>
+                                <div class="detail-item">
+                                    <label for="profDetails">Prof.</label>
+                                    <input id="profDetails" class="display-details" type="text" disabled>
+                                </div>
+                                <div class="detail-item">
+                                    <label for="scoreDetails">Score:</label>
+                                    <input id="scoreDetails" class="display-details" type="text" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="quiz-instruction-area">
+                        <h4 id="quiz-instructions">Multiple Choice Questions</h4>
+                    </div>
+                    
+                    <div id="body">
+
+                        <p class="question" id="question1">1. This is the first question</p>
+                        <div class="choices" id="choices1">
+                            <div class="first-group-choice">
+                                <input type="radio" id="choice1-1" name="choice1-1" value="A">
+                                <label for="choice1-1">AAAAAAAAAAAAAAAAAA</label>
+                                <br>
+                                <input type="radio" id="choice1-2" name="choice1-2" value="B">
+                                <label for="choice1-2">B</label>
+                            </div>
+                            <div class="second-group-choice">
+                                <input type="radio" id="choice1-3" name="choice1-3" value="C">
+                                <label for="choice1-3">C</label>
+                                <br>
+                                <input type="radio" id="choice1-4" name="choice1-4" value="D">
+                                <label for="choice1-4">D</label>
+                            </div>
+                        </div>
+        
+                        <p class="question" id="question2">2. This is the second question</p>
+                        <div class="choices" id="choices2">
+                            <div class="first-group-choice">
+                                <input type="radio" id="choice2-1" name="choice2-1" value="A">
+                                <label for="choice2-1">A</label>
+                                <br>
+                                <input type="radio" id="choice2-2" name="choice2-2" value="B">
+                                <label for="choice2-2">B</label>
+                            </div>
+                            <div class="second-group-choice">
+                                <input type="radio" id="choice2-3" name="choice2-3" value="C">
+                                <label for="choice2-3">C</label>
+                                <br>
+                                <input type="radio" id="choice2-4" name="choice2-4" value="D">
+                                <label for="choice2-4">D</label>
+                            </div>
+                        </div>
+        
+                        <p class="question" id="question3">3. This is the third question</p>
+                        <div class="choices" id="choices3">
+                            <div class="first-group-choice">
+                                <input type="radio" id="choice3-1" name="choice3-1" value="A">
+                                <label for="choice3-1">A</label>
+                                <br>
+                                <input type="radio" id="choice3-2" name="choice3-2" value="B">
+                                <label for="choice3-2">B</label>
+                            </div>
+                            <div class="second-group-choice">
+                                <input type="radio" id="choice3-3" name="choice3-3" value="C">
+                                <label for="choice3-3">C</label>
+                                <br>
+                                <input type="radio" id="choice3-4" name="choice3-4" value="D">
+                                <label for="choice3-4">D</label>
+                            </div>
+                        </div>
+        
+                        <p class="question" id="question4">4. This is the fourth question</p>
+                        <div class="choices" id="choices4">
+                            <div class="first-group-choice">
+                                <input type="radio" id="choice4-1" name="choice4-1" value="A">
+                                <label for="choice4-1">A</label>
+                                <br>
+                                <input type="radio" id="choice4-2" name="choice4-2" value="B">
+                                <label for="choice4-2">B</label>
+                            </div>
+                            <div class="second-group-choice">
+                                <input type="radio" id="choice4-3" name="choice4-3" value="C">
+                                <label for="choice4-3">C</label>
+                                <br>
+                                <input type="radio" id="choice4-4" name="choice4-4" value="D">
+                                <label for="choice4-4">D</label>
+                            </div>
+                        </div>
+        
+                        <p class="question" id="question5">5. This is the fifth question</p>
+                        <div class="choices" id="choices5">
+                            <div class="first-group-choice">
+                                <input type="radio" id="choice5-1" name="choice5-1" value="A">
+                                <label for="choice5-1">A</label>
+                                <br>
+                                <input type="radio" id="choice5-2" name="choice5-2" value="B">
+                                <label for="choice5-2">B</label>
+                            </div>
+                            <div class="second-group-choice">
+                                <input type="radio" id="choice5-3" name="choice5-3" value="C">
+                                <label for="choice5-3">C</label>
+                                <br>
+                                <input type="radio" id="choice5-4" name="choice5-4" value="D">
+                                <label for="choice5-4">D</label>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="next-previous-button">
+                        <button id="previous">Previous</button>
+                        <button id="next">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="list-of-answered-items" align="center">
+                <div id="timer-andmusic">
+                    <h1 class="header-second-page" id="timerDisplay"><span>00 : 00 : 00</span></h1>
+
+                    <button class="header-second-page" id="music-button">
+                        <img id="music-image" src="off.png" alt="Music control">
+                    </button>
+                    <audio loop src="Quiz BACKGROUND MUSIC.mp3" id="music" preload="auto" style="display: none;"></audio>
+                </div>
+                    
+                <div id="list-and-checkbox">
+                    <h2>List of answered items.</h2>
+
+                <div id="allCheckBox" id="col1">
+                    <div class="checkBox">
+                        <div>
+                            <input type="checkbox" id="item1" class="itemsCheckbox" disabled>
+                            <label for="item1">Item # 1</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item2" class="itemsCheckbox" disabled>
+                            <label for="item2">Item # 2</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item3" class="itemsCheckbox" disabled>
+                            <label for="item3">Item # 3</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item4" class="itemsCheckbox" disabled>
+                            <label for="item4">Item # 4</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item5" class="itemsCheckbox" disabled>
+                            <label for="item5">Item # 5</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item6" class="itemsCheckbox"disabled>
+                            <label for="item6">Item # 6</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item7" class="itemsCheckbox"disabled>
+                            <label for="item7">Item # 7</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item8" class="itemsCheckbox" disabled>
+                            <label for="item8">Item # 8</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item9" class="itemsCheckbox" disabled>
+                            <label for="item9">Item # 9</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item10" class="itemsCheckbox" disabled>
+                            <label for="item10">Item # 10</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item11" class="itemsCheckbox" disabled>
+                            <label for="item11">Item # 11</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item12" class="itemsCheckbox" disabled>
+                            <label for="item12">Item # 12</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item13" class="itemsCheckbox" disabled>
+                            <label for="item13">Item # 13</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item14" class="itemsCheckbox" disabled>
+                            <label for="item14">Item # 14</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item15" class="itemsCheckbox" disabled>
+                            <label for="item15">Item # 15</label>
+                        </div>
+                    </div>
+    
+                    <div class="checkBox" id="col2">
+                        <div>
+                            <input type="checkbox" id="item16" class="itemsCheckbox" disabled>
+                            <label for="item16">Item # 16</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" id="item17" class="itemsCheckbox" disabled>
+                            <label for="item17">Item # 17</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item18" class="itemsCheckbox" disabled>
+                            <label for="item18">Item # 18</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item19" class="itemsCheckbox" disabled>
+                            <label for="item19">Item # 19</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item20" class="itemsCheckbox" disabled>
+                            <label for="item20">Item # 20</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item21" class="itemsCheckbox" disabled>
+                            <label for="item21">Item # 21</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item22" class="itemsCheckbox" disabled>
+                            <label for="item22">Item # 22</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item23" class="itemsCheckbox" disabled>
+                            <label for="item23">Item # 23</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item24" class="itemsCheckbox" disabled>
+                            <label for="item24">Item # 24</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item25" class="itemsCheckbox" disabled >
+                            <label for="item25">Item # 25</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item26" class="itemsCheckbox" disabled>
+                            <label for="item26">Item # 26</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item27" class="itemsCheckbox" disabled>
+                            <label for="item27">Item # 27</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" id="item28" class="itemsCheckbox" disabled>
+                            <label for="item28">Item # 28</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item29" class="itemsCheckbox" disabled>
+                            <label for="item29">Item # 29</label>
+                        </div>
+    
+                        <div>
+                            <input type="checkbox" id="item30" class="itemsCheckbox" disabled>
+                            <label for="item30">Item # 30</label>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <button id="submit">Submit</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // for insturction
+    var instructionButton = document.getElementById("instructionButton");
+    var instructionContainer = document.getElementById("instructionContainer");
+    var closeButton = document.getElementsByClassName("close")[0];
+
+    instructionButton.addEventListener("click", function () {
+        instructionContainer.style.display = "block";
+    });
+
+    closeButton.addEventListener("click", function () {
+        instructionContainer.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === instructionContainer) {
+            instructionContainer.style.display = "none";
+        }
+    });
+
+    // proceed to the second page
+    var startQuizButton = document.getElementById("startQuiz");
+
+    startQuizButton.addEventListener("click", function () {
+        var name = document.getElementById("name").value;
+        var section = document.querySelector('input[name="section"]:checked') ? document.querySelector('input[name="section"]:checked').value : '';
+        var course = document.getElementById("course").value;
+        var prof = document.getElementById("prof").value;
+        var date = document.getElementById("date").value;
+
+        if (!name || !section || !course || !prof || !date) {
+            alert("Please fill out all fields.");
+            return;
+        }
+
+        document.getElementById("nameDetails").value = name;
+        document.getElementById("sectionDetails").value = section;
+        document.getElementById("courseDetails").value = course;
+        document.getElementById("dateDetails").value = date;
+        document.getElementById("profDetails").value = prof;
+ 
+        document.getElementById("firstPage").style.display = "none";
+        alert("Best of Luck!");
+        document.getElementById("secondPage").style.display = "flex";
+
+        countdown = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateTimeDisplay(timeLeft);
+            } else {
+                clearInterval(countdown);
+                // Pause the music
+                const music = document.getElementById("music");
+                music.pause();
+                document.getElementById("secondPage").style.display = "none";
+
+                setTimeout(() => {
+                    alert("Time's up! Quiz Submitted!");
+                    submitQuiz();
+                }, 1500);
+            }
+        }, 1000);
+    });
+
+    //timer
+    const timerDisplay = document.getElementById('timerDisplay');
+    let timeLeft = 30 * 60;
+
+    function updateTimeDisplay(time) {
+        const hours = Math.floor((time / 3600));
+        const minutes = Math.floor((time % 3600 / 60));
+        const seconds = time % 60;
+        timerDisplay.textContent = `${String(hours).padStart(2, '0')}: ${String(minutes).padStart(2, '0')}: ${String(seconds).padStart(2, '0')}`;
+    }
+
+    //music function
+    const musicButton = document.getElementById("music-button");
+    const musicImage = document.getElementById("music-image");
+    const music = document.getElementById("music");
+
+    musicButton.addEventListener("click", function () {
+        if (music.paused) {
+            music.play();
+            musicImage.src = "on.png"; 
+        } else {
+            music.pause(); 
+            musicImage.src = "off.png"; 
+        }
+    });
+
+    const quizSet = [
+    {
+        setName: "General",
+        questions: [
+            { question: "Which language is primarily used for structuring content on the web?", choices: ["Java", "HTML", "CSS", "Javascript"], answer: "HTML" },
+            { question: "Which language is commonly used to style and layout web pages?", choices: ["Java", "HTML", "CSS", "Javascript"], answer: "CSS" },
+            { question: "Which language was originally developed at Bell Labs in the early 1970s and is known for its efficiency and control over system resources?", choices: ["Java", "HTML", "CSS", "C"], answer: "C" },
+            { question: "Which language would you use to make a webpage visually appealing with fonts, colors, and layouts?", choices: ["Java", "HTML", "Javascript", "CSS"], answer: "CSS" },
+            { question: "Which language is widely used for adding interactivity and dynamic behavior to web pages?", choices: ["Java", "HTML", "CSS", "Javascript"], answer: "Javascript" }
+        ]
+    },
+    {
+        setName: "HTML (Markup Language)",
+        questions: [
+            { question: "What HTML element defines the structure of an HTML document?", choices: ["div", "body", "HTML", "head"], answer: "HTML" },
+            { question: "What HTML element is used to define a paragraph?", choices: ["p", "paragraph", "div", "h1"], answer: "p" },
+            { question: "Which HTML element is used to create an unordered list?", choices: ["ul", "li", "list", "ol"], answer: "ul" },
+            { question: "What HTML element is used to define an image?", choices: ["image", "img", "picture", "pic"], answer: "img" },
+            { question: "Which HTML element defines the title of a document?", choices: ["meta", "header", "title", "h1"], answer: "title" }
+        ]
+    },
+    {
+        setName: "CSS (style sheet language)",
+        questions: [
+            { question: "How do you apply a CSS style to an element with the id 'header'?", choices: [".header { /* styles */ }", "#header { /* styles */ }", "header { /* styles */ }", "background: blue;"], answer: "#header { /* styles */ }" },
+            { question: "Which CSS property is used to change the text color of an element?", choices: ["text-color", "color", "font-color", "fg-color"], answer: "color" },
+            { question: "How do you make the text bold in CSS?", choices: ["font-weight: bold;", "font-bold: true;", "text-weight: bold;", "bold: true;"], answer: "font-weight: bold;" },
+            { question: "Which CSS property controls the text size?", choices: ["size", "font-weight", "text-size", "font-size"], answer: "font-size" },
+            { question: "How do you select elements with the class name 'menu' in CSS?", choices: [".menu { /* styles */ }", "#menu { /* styles */ }", "menu { /* styles */ }", "*menu { /* styles */ }"], answer: ".menu { /* styles */ }" }
+        ]
+    },
+    {
+        setName: "JavaScript (Programming Language)",
+        questions: [
+            { question: "How do you create a function in JavaScript?", choices: ["def myFunction() { /* code */ }", "function myFunction() { /* code */ }", "create myFunction() { /* code */ }", "void myFunction() { /* code */ }"], answer: "function myFunction() { /* code */ }" },
+            { question: "How do you call a function named 'myFunction' in JavaScript?", choices: ["myFunction;", "execute myFunction();", "call myFunction();", "myFunction();"], answer: "myFunction();" },
+            { question: "Which of the following is a correct way to create an array in JavaScript?", choices: ["var arr = [1, 2, 3];", "var arr = (1, 2, 3);", "var arr = {1, 2, 3};", "var arr = <1, 2, 3>;"], answer: "var arr = [1, 2, 3];" },
+            { question: "How do you write an IF statement in JavaScript?", choices: ["if (i is 5) { /* code */ }", "if i == 5 then { /* code */ }", "if (i === 5) { /* code */ }", "if i = 5 then { /* code */ }"], answer: "if (i === 5) { /* code */ }" },
+            { question: "Which of the following is used to add an element to the end of an array in JavaScript?", choices: ["append()", "add()", "push()", "insert()"], answer: "push()" }
+        ]
+    },
+    {
+        setName: "Java (Programming Language)",
+        questions: [
+            { question: "Which keyword is used to create a class in Java?", choices: ["public", "class", "new", "object"], answer: "class" },
+            { question: "How do you declare a main method in Java?", choices: ["public static void main(String[] args)", "void main(String args[])", "public main(String[] args)", "public void main(String args[])"], answer: "public static void main(String[] args)" },
+            { question: "Which of the following is not a Java access modifier?", choices: ["public", "internal", "private", "protected"], answer: "internal" },
+            { question: "What is the correct way to create an object in Java?", choices: ["ClassName obj = new ClassName();", "ClassName obj = ClassName();", "ClassName obj = new Class Name();", "ClassName obj = new ClassName;", "ClassName obj = new ClassName();"], answer: "ClassName obj = new ClassName();" },
+            { question: "Which method is used to compare two strings in Java?", choices: ["equals()", "compare()", "==", "compareTo()"], answer: "equals()" }
+        ]
+    },
+    {
+        setName: "C (Programming Language)",
+        questions: [
+            { question: "Which of the following is a correct syntax for a for loop in C?", choices: ["for (int i = 0; i < 10; i++)", "for (i = 0; i < 10; i++)", "for (i = 0; i < 10; i--)", "for i in range(10)"], answer: "for (int i = 0; i < 10; i++)" },
+            { question: "Which of the following is the correct syntax for declaring a variable in C?", choices: ["int num; 5 = num;", "declare int num = 5;", "int num = 5;", "variable int num = 5;"], answer: "int num = 5;" },
+            { question: "What is the size of the int data type in C?", choices: ["2 bytes", "4 bytes", "8 bytes", "Depends on the compiler"], answer: "4 bytes" },
+            { question: "What is the result of ++x if x initially holds the value 10?", choices: ["11", "12", "10", "9"], answer: "11" },
+            { question: "How do you declare a pointer to an integer in C?", choices: ["int *ptr;", "int& ptr;", "pointer int ptr;", "int ptr*;"], answer: "int *ptr;" }
+        ]
+    }
+];
+        //function for changin the questionsndynamically
+        let currentPage = 0;
+        let selectedAnswers = {};
+        let submitted = false;
+
+        function displayQuestions(page) {
+            const questions = quizSet[page].questions;
+            const body = document.getElementById('body');
+            body.innerHTML = ''; // Clear previous questions
+
+            questions.forEach((question, index) => {
+                const questionIndex = page * 5 + index + 1; // Calculate question index from 1 to 30
+                body.innerHTML += `
+                    <div class="question-container">
+                        <p class="question">${questionIndex}. ${question.question}</p>
+                        <div class="choices" id="choices${questionIndex}">
+                            <!-- Choices will be dynamically added here -->
+                        </div>
+                    </div>`;
+
+                const choicesContainer = document.getElementById(`choices${questionIndex}`);
+                question.choices.forEach((choice, choiceIndex) => {
+                    const choiceId = `choice${questionIndex}-${choiceIndex + 1}`;
+                    const choiceLabel = String.fromCharCode(65 + choiceIndex); // A, B, C, D, ...
+                    const isCorrect = choice === question.answer; // Check if the choice is correct
+                    choicesContainer.innerHTML += `
+                        <div class="choice">
+                            <input type="radio" id="${choiceId}" name="choice${questionIndex}" value="${choice}" ${selectedAnswers[questionIndex] === choice ? 'checked' : ''} ${isCorrect ? 'data-correct="true"' : ''}>
+                            <label for="${choiceId}" style="color: ${isCorrect ? 'black' : 'inherit'};">${choiceLabel}. ${choice}</label>
+                        </div>`;
+                });
+            });
+
+            if (submitted) {
+                updateChoicesStyling();
+            }
+        }
+
+        function navigateToPage(page) {
+            currentPage = page;
+            displayQuestions(page);
+            attachRadioListeners();
+        }
+
+        // Display the first page when the page loads
+        navigateToPage(currentPage);
+
+        // next button function
+        document.getElementById('next').addEventListener('click', () => {
+            if (currentPage < quizSet.length - 1) {
+                navigateToPage(currentPage + 1);
+            }
+        });
+
+        // previous button function
+        document.getElementById('previous').addEventListener('click', () => {
+            if (currentPage > 0) {
+                navigateToPage(currentPage - 1);
+            }
+        });
+
+        //checking function
+        function checkAnswer(questionIndex) {
+            const choices = document.getElementsByName(`choice${questionIndex}`);
+            const selectedChoice = Array.from(choices).find(choice => choice.checked);
+
+            if (selectedChoice) {
+                const answer = selectedChoice.value;
+                selectedAnswers[questionIndex] = answer; // Store the selected answer globally
+
+                // Update the corresponding checkbox
+                const checkbox = document.getElementById(`item${questionIndex}`);
+                if (checkbox) {
+                    checkbox.checked = true; // Check the corresponding checkbox
+                }
+            }
+        }
+
+        function attachRadioListeners() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radioButton => {
+                radioButton.addEventListener('change', () => {
+                    const questionIndex = parseInt(radioButton.name.replace('choice', ''));
+                    checkAnswer(questionIndex);
+                });
+            });
+        }
+
+        // Function to disable all radio buttons without removing their checked state
+        function disableRadioButtons() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radioButton => {
+                radioButton.disabled = true;
+            });
+        }
+
+        function submitQuiz() {
+        // Pause the music
+        const music = document.getElementById("music");
+        music.pause();
+
+        // Calculate and display the score
+        const score = calculateScore();
+        const totalQuestions = getTotalQuestions();
+        const scoreInput = document.getElementById('scoreDetails');
+        scoreInput.value = `${score}/${totalQuestions}`;
+
+        // Hide the second page, submit button 
+        document.getElementById("submit").style.display = "none";
+        document.getElementById("secondPage").style.display = "none";
+        document.getElementById("music-image").src = "off.png";
+
+        // Disable all radio buttons
+        disableRadioButtons();
+        clearInterval(countdown);
+        document.getElementById("timerDisplay").style.animation = "none";
+        document.getElementById("timerDisplay").textContent = scoreInput.value;
+
+        submitted = true;
+
+        // Set current page to 0 (first page) to display questions 1 to 5
+        currentPage = 0;
+
+       // Only update the display for the current page
+       displayQuestions(currentPage);
+
+       setTimeout(() => {
+            alert("Quiz submitted! Your score has been updated.");
+
+            // Show the second page with the score input value
+            document.getElementById("secondPage").style.display = "flex";
+                
+        }, 100); // Adjust the delay as needed
+    }
+
+
+
+        // Event listener for the "Submit" button
+        document.getElementById('submit').addEventListener('click', submitQuiz);
+
+        // Function to calculate the score based on selected answers
+        function calculateScore() {
+            let score = 0;
+            quizSet.forEach((set, pageIndex) => {
+                set.questions.forEach((question, questionIndex) => {
+                    const globalQuestionIndex = pageIndex * 5 + questionIndex + 1;
+                    if (selectedAnswers[globalQuestionIndex] === question.answer) {
+                        score++;
+                    }
+                });
+            });
+            return score;
+        }
+
+        // Function to get the total number of questions in the entire quiz
+        function getTotalQuestions() {
+            return quizSet.reduce((total, set) => total + set.questions.length, 0);
+        }
+
+        // Function to update choices styling based on correctness
+        function updateChoicesStyling() {
+            const choices = document.querySelectorAll('.choices input[type="radio"]');
+            choices.forEach(choice => {
+                const label = choice.nextElementSibling;
+                if (choice.dataset.correct === "true") {
+                    label.style.color = 'green';
+                } else if (choice.checked) {
+                    label.style.color = 'red'; // Color incorrect choices red
+                }
+            });
+        }
+    </script>
+</body>
+</html>
